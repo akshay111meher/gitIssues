@@ -46,6 +46,13 @@ server.route({
     try{
       var rawUrl = request.payload.url;
     var params = rawUrl.split('/');
+	if(params.length <=4){
+	reply({
+	  one:"wrong url",
+	  two:"wrong url",
+	  three:"wrong url"
+	});
+	}
     allData = [];
     var url = "https://api.github.com/repos/"+params[3]+"/"+params[4];
     new Promise(function(resolve, reject) {
