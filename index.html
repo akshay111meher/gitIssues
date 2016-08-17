@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>GitHub repo page</title>
+  </head>
+  <body>
+    First name: <input type="text" id="repo" name="FirstName" placeholder="enter the github repo"><br>
+    <button type="button" class="dataButton">Click Me!</button>
+    <div class="div1">
+
+    </div><br>
+    <div class="div2">
+
+    </div><br>
+    <div class="div3">
+
+    </div>
+  </body>
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+  <script type="text/javascript">
+    $('.dataButton').on('click',function(){
+      var repo = $('#repo').val();
+        if(repo.length!=0){
+            console.log('button clicked');
+
+          $('.dataButton').prop("disabled",true);
+
+          var repo = $('#repo').val();
+          var data = {
+            url : repo
+          }
+
+          $(".div1").html("data loading");
+          $(".div2").html("data loading");
+          $(".div3").html("data loading");
+          $.ajax({type:'POST', url: "demo", data:data, success: function(result){
+            $(".div1").html(result.one);
+            $(".div2").html(result.two);
+            $(".div3").html(result.three);
+            $('.dataButton').prop("disabled",false);
+        }});
+      }
+    });
+  </script>
+</html>
