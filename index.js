@@ -9,7 +9,6 @@ var url = "https://api.github.com/repos/"+params[3]+"/"+params[4];
 console.log(url);
 allData = [];
 server.connection({
-    //host : 'localhost',
     port : Number(process.argv[2] || 8000),
     routes: {
       cors:true
