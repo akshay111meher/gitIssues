@@ -34,7 +34,7 @@
           $(".div1").html("data loading");
           $(".div2").html("data loading");
           $(".div3").html("data loading");
-          $.ajax({type:'POST', url: "http://52.165.28.57:8000/demo", data:data, success: function(result){
+          $.ajax({type:'POST', url: "http://localhost:8000/", data:data, success: function(result){
             $(".div1").html(result.one);
             $(".div2").html(result.two);
             $(".div3").html(result.three);
