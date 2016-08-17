@@ -43,7 +43,8 @@ server.route({
   path: '/demo',
   method: 'POST',
   handler: function(request,reply){
-    var rawUrl = request.payload.url;
+    try{
+      var rawUrl = request.payload.url;
     var params = rawUrl.split('/');
     allData = [];
     var url = "https://api.github.com/repos/"+params[3]+"/"+params[4];
@@ -84,6 +85,11 @@ server.route({
         three : "more than one week = "+ returnData3.length
       });
     });
+  }catch(ex){reply({
+    one:'wrong url',
+    two:'wrong url',
+    three:'wrong url'
+  });}
   }
 });
 
