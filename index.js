@@ -43,6 +43,7 @@ server.route({
   path: '/demo',
   method: 'POST',
   handler: function(request,reply){
+	console.log('query route called at '+new Date());
     try{
       var rawUrl = request.payload.url;
     var params = rawUrl.split('/');
@@ -72,15 +73,15 @@ server.route({
 
           var currentDate = new Date(allData[i].created_at).valueOf();
           if(currentDate > twentyFour){
-            console.log('less than 24 called');
+           // console.log('less than 24 called');
               returnData1.push(allData[i]);
           }
           else if(currentDate < twentyFour && currentDate > week){
-            console.log('24 hours to one week');
+            //console.log('24 hours to one week');
             returnData2.push(allData[i]);
           }
           else{
-            console.log('more than one week');
+           // console.log('more than one week');
             returnData3.push(allData[i]);
           }
         }
@@ -118,8 +119,8 @@ function getAllData(uri,number,resolve){
    };
 
   request(options, function (error, response, body) {
-    console.log(JSON.parse(body).length);
-    console.log(response.headers.link);
+    //console.log(JSON.parse(body).length);
+   // console.log(response.headers.link);
     if (response.headers.link && JSON.parse(body).length!=0) {
       allData = allData.concat(JSON.parse(body));
       getAllData(uri,i+1,resolve);
